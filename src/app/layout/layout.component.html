@@ -1,0 +1,33 @@
+<div class="p-grid dashboard-container">
+    <!-- Sidebar -->
+    <div class="p-col" [ngClass]="isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'" [style]="{ 'width': '240px' }">
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h2>Dashboard</h2>
+        </div>
+        <ul class="sidebar-menu">
+          <li><a routerLink="/dashboard" routerLinkActive="active">Inicio</a></li>
+          <li><a routerLink="/profile" routerLinkActive="active">Perfil</a></li>
+          <li><a routerLink="/product" routerLinkActive="active">Agregar producto</a></li>
+          <li><a routerLink="/listProducts" routerLinkActive="active">Lista de productos</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Main content -->
+    <div class="p-col" [style]="{ 'width': 'calc(100% - 240px)' }">
+      <p-toolbar>
+        <div class="p-toolbar-group-left">
+          <span class="user-info">Bienvenido, Usuario</span>
+        </div>
+        <div class="p-toolbar-group-right">
+          <button pButton icon="pi pi-sign-out" label="Cerrar sesión" (click)="logout()"></button>
+        </div>
+      </p-toolbar>
+  
+      <div class="dashboard-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  

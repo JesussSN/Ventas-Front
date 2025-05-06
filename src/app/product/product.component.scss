@@ -1,0 +1,56 @@
+/* Estilo general para el select */
+.custom-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+  
+    /* Estilo cuando está en foco */
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  
+    /* Añadir sombra sutil al pasar el ratón */
+    &:hover {
+      border-color: #0056b3;
+    }
+  
+    /* Añadir espacio dentro del select */
+    padding-left: 10px;
+  }
+  
+  /* Estilo de las opciones */
+  .custom-select option {
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Estilo para la opción seleccionada */
+  .custom-select option:checked {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .field {
+    margin-bottom: 16px; /* Ajusta este valor según el espacio que necesites */
+  }
+  
+  h2 {
+    margin-bottom: 24px; /* Ajusta el espacio debajo del título */
+  }
+  
+/* Archivo CSS */
+.label-spacing {
+    margin-bottom: 1.0rem; /* Ajusta este valor según lo que necesites */
+  }
+  
+  input,
+textarea,
+select {
+  margin-top: 8px; /* o el valor que prefieras */
+}

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';      // Importar PrimeNG módulos
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-product',
@@ -13,13 +14,19 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     InputTextModule,
     InputTextareaModule,
-    ButtonModule
+    ButtonModule,
+    DropdownModule
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
 export class ProductComponent {
-  // El objeto que enlazamos al formulario
+  categorias = [
+    { label: 'Producto de belleza', value: 'Producto de belleza' },
+    { label: 'Producto electrónico', value: 'Producto electrónico' },
+    { label: 'Producto deportivo', value: 'Producto deportivo' }
+  ];
+  
   producto = {
     nombre: '',
     precio: null,
@@ -30,12 +37,7 @@ export class ProductComponent {
   // Método que se ejecuta al enviar el formulario
   agregarProducto() {
     console.log('Producto agregado:', this.producto);
-
-    // Aquí podrías luego llamar un servicio para guardar el producto en la base de datos
-    // Ejemplo:
-    // this.productoService.guardarProducto(this.producto).subscribe(...);
-
-    // Limpiar el formulario después de agregar
+    
     this.producto = {
       nombre: '',
       precio: null,

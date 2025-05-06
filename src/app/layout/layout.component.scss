@@ -74,3 +74,13 @@
     padding: 1rem;
   }
 }
+
+.logout-button {
+  background-color: #343a40; /* mismo color que el navbar */
+  color: white;
+  border: none;
+}
+
+.logout-button:hover {
+  background-color: #2c3136; /* color más oscuro al pasar el mouse */
+}

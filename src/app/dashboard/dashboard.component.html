@@ -1,6 +1,14 @@
-<!-- dashboard.component.html -->
 <div class="dashboard-content">
-    <h1>Bienvenido al sitio de Gestion de ventas</h1>
-    <p>Donde podras gestionar todos los productos de tu inventario</p>
-  </div>
-  
+  <h1>Bienvenido al sistema de ventas</h1>
+  <p>Sistema de Gestion de productos</p>
+</div>
+
+<p-carousel [value]="productos" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+  <ng-template pTemplate="item" let-producto>
+    <div class="producto-item">
+      <img [src]="producto.imagen" [alt]="producto.nombre" class="imagen-producto" />
+      <h3>{{ producto.nombre }}</h3>
+      <p>{{ producto.descripcion }}</p>
+    </div>
+  </ng-template>
+</p-carousel>

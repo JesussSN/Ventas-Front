@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { Router } from '@angular/router';  // Importar Router
 
 import { Producto } from '../interfaces/producto';
 import { ProductoService } from '../servicios/producto.service';
@@ -28,7 +29,8 @@ export class ListProductsComponent implements OnInit {
 
   constructor(
     private productoService: ProductoService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router  // Inyectar Router
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +41,8 @@ export class ListProductsComponent implements OnInit {
   }
 
   editarProducto(producto: Producto) {
-    console.log('Editar producto:', producto);
+    // Navegar a la ruta de edición con el id del producto
+    this.router.navigate(['/product', producto.id]);
   }
 
   eliminarProducto(id: number) {

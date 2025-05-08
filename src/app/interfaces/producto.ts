@@ -1,8 +1,9 @@
 export interface Producto {
-  id?: number; // Opcional (lo puede generar el backend)
+  id?: number;
   nombre: string;
   precio: number | null;
   categoria: string;
   descripcion: string;
+  createAt?: Date; // Cambiado a Date
 }
 

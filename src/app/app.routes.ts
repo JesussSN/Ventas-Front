@@ -13,6 +13,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'product', component: ProductComponent },
+    { path: 'product/:id', component: ProductComponent },
     { path: 'listProducts', component: ListProductsComponent },
   ] },
   { path: '**', redirectTo: '/login' }

@@ -1,10 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { InputTextModule } from 'primeng/inputtext';      // Importar PrimeNG módulos
+import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { ProductoService } from '../servicios/producto.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-product',
@@ -15,8 +20,11 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     InputTextareaModule,
     ButtonModule,
-    DropdownModule
+    DropdownModule,
+    HttpClientModule,
+    ToastModule
   ],
+  providers: [ProductoService,MessageService],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })
@@ -26,23 +34,42 @@ export class ProductComponent {
     { label: 'Producto electrónico', value: 'Producto electrónico' },
     { label: 'Producto deportivo', value: 'Producto deportivo' }
   ];
-  
+
   producto = {
     nombre: '',
     precio: null,
     categoria: '',
-    descripcion: ''
+    descripcion: '',
+    createAt: new Date() // Asegúrate que el backend lo requiere
   };
 
-  // Método que se ejecuta al enviar el formulario
+  constructor(private productoService: ProductoService,  private messageService: MessageService) {}
+
   agregarProducto() {
-    console.log('Producto agregado:', this.producto);
-    
-    this.producto = {
-      nombre: '',
-      precio: null,
-      categoria: '',
-      descripcion: ''
-    };
+    this.productoService.crear(this.producto).subscribe({
+      next: (respuesta) => {
+        console.log('Producto creado con éxito:', respuesta);
+  
+        // Mostrar mensaje de éxito
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Éxito',
+          detail: 'Se agregó un nuevo producto al inventario'
+        });
+  
+        // Resetear formulario
+        this.producto = {
+          nombre: '',
+          precio: null,
+          categoria: '',
+          descripcion: '',
+          createAt: new Date()
+        };
+      },
+      error: (error) => {
+        console.error('Error al crear el producto:', error);
+      }
+    });
   }
+  
 }

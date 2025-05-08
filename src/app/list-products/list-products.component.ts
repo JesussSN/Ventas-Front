@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
 import { Producto } from '../interfaces/producto';
 import { ProductoService } from '../servicios/producto.service';
 
@@ -13,16 +16,20 @@ import { ProductoService } from '../servicios/producto.service';
     CommonModule,
     TableModule,
     ButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmDialogModule
   ],
-  providers: [ProductoService], // <- AÑADIR ESTO
+  providers: [ProductoService, ConfirmationService],
   templateUrl: './list-products.component.html',
   styleUrl: './list-products.component.scss'
 })
 export class ListProductsComponent implements OnInit {
   productos: Producto[] = [];
 
-  constructor(private productoService: ProductoService) {}
+  constructor(
+    private productoService: ProductoService,
+    private confirmationService: ConfirmationService
+  ) {}
 
   ngOnInit(): void {
     this.productoService.listar().subscribe({
@@ -35,8 +42,18 @@ export class ListProductsComponent implements OnInit {
     console.log('Editar producto:', producto);
   }
 
-  eliminarProducto(index: number) {
-    this.productos.splice(index, 1);
-    this.productos = [...this.productos];
+  eliminarProducto(id: number) {
+    this.confirmationService.confirm({
+      message: '¿Desea eliminar el producto?',
+      accept: () => {
+        this.productoService.eliminar(id).subscribe({
+          next: () => {
+            this.productos = this.productos.filter(p => p.id !== id);
+            console.log('Producto eliminado con éxito');
+          },
+          error: (err) => console.error('Error al eliminar el producto', err)
+        });
+      }
+    });
   }
 }

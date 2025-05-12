@@ -1,0 +1,41 @@
+<p-card header="Registro de Usuario" class="registro-card">
+  <div class="p-fluid">
+    <div class="field">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" pInputText [(ngModel)]="nombre" />
+    </div>
+
+    <div class="field">
+      <label for="correo">Correo Electrónico</label>
+      <input id="correo" type="email" pInputText [(ngModel)]="correoElectronico" />
+    </div>
+
+    <div class="field">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" pInputText [(ngModel)]="telefono" />
+    </div>
+
+    <div class="field">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" type="text" pInputText [(ngModel)]="direccion" />
+    </div>
+
+    <div class="field">
+      <label for="password">Contraseña</label>
+      <input id="password" type="password" pPassword [(ngModel)]="password" feedback="false" toggleMask="true" />
+    </div>
+
+    <div class="field">
+      <label for="repetirPassword">Repetir Contraseña</label>
+      <input id="repetirPassword" type="password" pPassword [(ngModel)]="repetirPassword" feedback="false" toggleMask="true" />
+    </div>
+
+    <div *ngIf="passwordsNoCoinciden" class="error-message">
+      Las contraseñas no coinciden.
+    </div>
+
+    <div class="button-container" style="margin-top: 2rem;">
+      <button pButton type="button" label="Registrarse" icon="pi pi-user-plus" (click)="registrarUsuario()" class="guardar-button"></button>
+    </div>
+  </div>
+</p-card>

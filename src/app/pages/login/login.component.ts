@@ -32,5 +32,12 @@ export class LoginComponent {
       alert('Usuario o contraseña incorrectos.');
     }
   }
+
+  register(){
+    this.router.navigate(['/registro']);
+  }
   
+  forgotPassword(){
+
+  }
 }

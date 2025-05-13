@@ -8,7 +8,7 @@ import { Usuario } from '../interfaces/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:8080/api/usuarios'; // Ajusta según tu backend
+  private apiUrl = 'http://localhost:8080/api/usuarios';
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +16,18 @@ export class UsuarioService {
     return this.http.post<Usuario>(this.apiUrl, usuario);
   }
 
-  // Aquí puedes agregar más métodos, como:
-  // obtenerUsuarios(), actualizarUsuario(), eliminarUsuario(), etc.
+  login(credentials: { correoElectronico: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials);
+ }
+
+
+  getUsuarioPorId(id: number) {
+    return this.http.get<Usuario>(`http://localhost:8080/api/usuarios/${id}`);
+  }
+
+  actualizarUsuario(id: number, usuario: Usuario) {
+    return this.http.put<Usuario>(`http://localhost:8080/api/usuarios/${id}`, usuario);
+  }
+
+
 }

@@ -1,36 +1,41 @@
 <div class="dashboard-content">
   <h1 class="p-text-center">Perfil de Usuario</h1>
-
-  <!-- Tarjeta para contener el formulario -->
   <p-card header="Formulario de Perfil" class="p-shadow-4">
     <form class="profile-form" (ngSubmit)="guardarCambios()">
       <div class="p-fluid grid">
 
-        <!-- Campo para el nombre -->
         <div class="field col-12 md:col-6">
           <label for="nombre">Nombre</label>
           <input id="nombre" type="text" pInputText [(ngModel)]="usuario.nombre" name="nombre" required />
         </div>
 
-        <!-- Campo para el correo electrónico -->
         <div class="field col-12 md:col-6">
           <label for="correo">Correo electrónico</label>
-          <input id="correo" type="email" pInputText [(ngModel)]="usuario.correo" name="correo" required />
+          <input id="correo" type="email" pInputText [(ngModel)]="usuario.correo_electronico" name="correoElectronico" required />
         </div>
 
-        <!-- Campo para el teléfono -->
         <div class="field col-12 md:col-6">
           <label for="telefono">Teléfono</label>
           <input id="telefono" type="tel" pInputText [(ngModel)]="usuario.telefono" name="telefono" />
         </div>
 
-        <!-- Campo para la dirección -->
         <div class="field col-12">
           <label for="direccion">Dirección</label>
           <input id="direccion" type="text" pInputText [(ngModel)]="usuario.direccion" name="direccion" />
         </div>
 
-        <!-- Botón para guardar cambios -->
+        <div class="field col-12 md:col-6">
+          <label for="password">Nueva Contraseña</label>
+          <p-password id="password" [(ngModel)]="nuevaPassword" name="nuevaPassword" [feedback]="false"
+          [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+        </div>
+
+        <div class="field col-12 md:col-6">
+          <label for="repetirPassword">Repetir Contraseña</label>
+          <p-password id="repetirPassword" [(ngModel)]="repetirPassword" name="repetirPassword"
+          [feedback]="false" [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+        </div>
+
         <div class="col-12 p-d-flex p-jc-center">
           <button pButton type="submit" label="Guardar cambios" class="p-button-success p-mt-3 guardar-button"></button>
         </div>

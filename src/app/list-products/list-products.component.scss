@@ -1,12 +1,10 @@
-/* Estilo general de la tabla */
-:host ::ng-deep .p-table {
-    background-color: #0f1e38; /* fondo de la tabla */
+  :host ::ng-deep .p-table {
+    background-color: #0f1e38;
     color: #f0f0f0;
     border: none;
     font-size: 1rem;
   }
   
-  /* Encabezado */
   :host ::ng-deep .p-table thead th {
     background-color: #12263a;
     color: #ffffff;
@@ -14,23 +12,20 @@
     font-weight: 600;
   }
   
-  /* Filas */
   :host ::ng-deep .p-table tbody tr {
     background-color: #0f1e38;
     border-bottom: 1px solid #1f2d45;
   }
   
   :host ::ng-deep .p-table tbody tr:hover {
-    background-color: #1e3a8a; /* azul medio en hover */
+    background-color: #1e3a8a;
   }
   
-  /* Celdas */
   :host ::ng-deep .p-table td {
     color: #e5e5e5;
     border: none;
   }
   
-  /* Botones dentro de la tabla */
   :host ::ng-deep .p-button {
     color: #e5e5e5;
   }
@@ -40,7 +35,6 @@
     color: white;
   }
   
-  /* Paginador */
   :host ::ng-deep .p-paginator {
     background-color: #0a192f;
     color: #ffffff;
@@ -52,12 +46,10 @@
     color: white;
   }
 
-  /* Aplica el color azul a los íconos dentro de los botones */
-:host ::ng-deep .p-button .pi {
+  :host ::ng-deep .p-button .pi {
     color: #265acc;
   }
   
-  /* Opcional: color del ícono al hacer hover sobre el botón */
   :host ::ng-deep .p-button:hover .pi {
     color: #ffffff;
   }

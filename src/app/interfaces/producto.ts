@@ -4,6 +4,6 @@ export interface Producto {
   precio: number | null;
   categoria: string;
   descripcion: string;
-  createAt?: Date; // Cambiado a Date
+  createAt?: Date;
 }
 

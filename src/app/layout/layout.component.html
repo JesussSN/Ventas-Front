@@ -1,5 +1,4 @@
 <div class="p-grid dashboard-container">
-    <!-- Sidebar -->
     <div class="p-col" [ngClass]="isSidebarVisible ? 'sidebar-visible' : 'sidebar-hidden'" [style]="{ 'width': '240px' }">
       <div class="sidebar">
         <div class="sidebar-header">
@@ -14,17 +13,15 @@
       </div>
     </div>
   
-    <!-- Main content -->
     <div class="p-col" [style]="{ 'width': 'calc(100% - 240px)' }">
       <p-toolbar>
         <div class="p-toolbar-group-left">
-          <span class="user-info">Bienvenido, Usuario</span>
+          <span class="user-info">Bienvenido, {{ usuario?.nombre }}</span>
         </div>
         <div class="p-toolbar-group-right">
           <button pButton icon="pi pi-sign-out" label="Cerrar sesión" (click)="logout()" class="logout-button"></button>
         </div>
       </p-toolbar>
-  
       <div class="dashboard-content">
         <router-outlet></router-outlet>
       </div>

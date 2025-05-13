@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Producto } from '../interfaces/producto';
-import { ActivatedRoute, Router } from '@angular/router'; // Importar ActivatedRoute y Router
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -43,15 +43,15 @@ export class ProductComponent implements OnInit {
   constructor(
     private productoService: ProductoService,
     private messageService: MessageService,
-    private route: ActivatedRoute, // Inyectar ActivatedRoute
-    private router: Router // Inyectar Router
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const productoId = this.route.snapshot.paramMap.get('id'); // Obtener el id de la URL
+    const productoId = this.route.snapshot.paramMap.get('id');
     if (productoId) {
       this.modoEdicion = true;
-      this.cargarProducto(Number(productoId)); // Llamar a un método para cargar el producto
+      this.cargarProducto(Number(productoId));
     }
   }
 
@@ -70,7 +70,7 @@ export class ProductComponent implements OnInit {
         this.mostrarMensaje('Se agregó un nuevo producto al inventario');
         this.limpiarFormulario();
         this.productoActualizado.emit();
-        this.router.navigate(['/listProducts']); // Redirigir a la lista de productos
+        this.router.navigate(['/listProducts']);
       },
       error: (error) => console.error('Error al crear el producto:', error)
     });
@@ -83,7 +83,7 @@ export class ProductComponent implements OnInit {
         this.modoEdicion = false;
         this.limpiarFormulario();
         this.productoActualizado.emit();
-        this.router.navigate(['/listProducts']); // Redirigir a la lista de productos
+        this.router.navigate(['/listProducts']);
       },
       error: (error) => console.error('Error al actualizar el producto:', error)
     });

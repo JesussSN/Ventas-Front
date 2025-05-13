@@ -1,16 +1,16 @@
 .login-card {
-  display: flex;          /* Cambiamos a flex para controlarlo */
-  flex-direction: column; /* Columnar (opcional, organiza el contenido verticalmente) */
-  align-items: center;    /* Centrar el contenido si quieres */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
   
-  width: auto;            /* NO queremos que sea 100% */
-  max-width: 400px;       /* No más de 400px */
+  width: auto;
+  max-width: 400px;
   
-  margin: 4rem auto;      /* Centrado horizontal */
+  margin: 4rem auto; 
   padding: 2rem;
   
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra opcional */
-  border-radius: 12px;    /* Bordes redondeados */
-  background-color: #ffffff; /* Fondo blanco o el que prefieras */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-color: #ffffff; 
 }
 

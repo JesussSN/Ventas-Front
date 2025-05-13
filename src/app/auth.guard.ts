@@ -8,9 +8,8 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    // Verificar si estamos en SSR
     if (typeof window === 'undefined') {
-      return true; // Permitir el acceso en SSR
+      return true;
     }
 
     const token = localStorage.getItem('token');

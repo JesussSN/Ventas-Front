@@ -39,18 +39,14 @@ export class RegistroComponent {
 
   constructor(private router: Router, private usuarioService: UsuarioService, private messageService: MessageService) {}
 
-  // Método para registrar el usuario
+
   registrarUsuario() {
-    // Validar si las contraseñas coinciden
     if (this.password !== this.repetirPassword) {
       this.passwordsNoCoinciden = true;
       return;
     }
-
-    // Restablecer la variable de error en caso de que las contraseñas coincidan
     this.passwordsNoCoinciden = false;
 
-    // Crear el objeto usuario con los datos del formulario
     const usuario: Usuario = {
       nombre: this.nombre,
       correo_electronico: this.correo_electronico,
@@ -60,7 +56,6 @@ export class RegistroComponent {
     };
     console.log('Usuario a enviar:', usuario);
 
-    // Llamar al servicio para crear el usuario
     this.usuarioService.crearUsuario(usuario).subscribe({
       next: () => {
         this.messageService.add({

@@ -3,12 +3,13 @@ import { provideAnimations } from '@angular/platform-browser/animations'; // Imp
 import { AppComponent } from './app/app.component';
 
 import { appConfig } from './app/app.config';
+import { provideHttpClient } from '@angular/common/http';
 
 // Combinar configuración existente con animaciones
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     ...(appConfig.providers || []),
-    provideAnimations() // Habilitar animaciones
+    provideAnimations(),provideHttpClient() // Habilitar animaciones
   ]
 }).catch((err) => console.error(err));

@@ -15,7 +15,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/registro/registro.component').then(m => m.RegistroComponent)
   },
-
+  {
+    path: 'restablecer',
+    loadComponent: () =>
+      import('./pages/restablecer-contrasena/restablecer-contrasena.component').then(m => m.RestablecerContrasenaComponent)
+  },
   {
     path: '',
     component: LayoutComponent,

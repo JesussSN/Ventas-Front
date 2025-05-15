@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <p-card header="Iniciar sesión" class="login-card">
   <div class="p-fluid">
     <div class="field" style="margin-bottom: 1.5rem;">
@@ -19,7 +20,20 @@
     </div>
 
     <div style="text-align: center; margin-top: 1rem;">
-      <a href="#" (click)="forgotPassword()">¿Olvidé mi contraseña?</a>
+      <a href="#" (click)="forgotPassword(); $event.preventDefault()">¿Olvidé mi contraseña?</a>
     </div>
+
   </div>
 </p-card>
+
+<p-dialog header="Recuperar contraseña" [(visible)]="mostrarDialogoRecuperacion" [modal]="true" [closable]="true" [style]="{width: '350px'}">
+  <div class="p-fluid">
+    <div class="field">
+      <label for="emailRecuperacion">Correo electrónico</label>
+      <input id="emailRecuperacion" type="email" pInputText [(ngModel)]="correoRecuperacion" />
+    </div>
+    <div class="button-container" style="margin-top: 1.5rem; text-align: right;">
+      <button pButton type="button" label="Validar correo" icon="pi pi-envelope" (click)="enviarRecuperacion()"></button>
+    </div>
+  </div>
+</p-dialog>

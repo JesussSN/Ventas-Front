@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   productos = [
     {
       nombre: 'Productos de Belleza',
-      imagen: 'assets/belleza.jpg',
+      imagen: 'assets/belleza2.jpg',
       descripcion: 'Contamos con productos de belleza'
     },
     {
@@ -36,9 +36,9 @@ export class DashboardComponent implements OnInit {
       descripcion: 'Contamos con productos deportivos'
     },
     {
-      nombre: 'Productos tecnologicos',
+      nombre: 'Productos tecnológicos',
       imagen: 'assets/tec.jpg',
-      descripcion: 'Contamos con tecnologia'
+      descripcion: 'Contámos con tecnología'
     }
   ];
 

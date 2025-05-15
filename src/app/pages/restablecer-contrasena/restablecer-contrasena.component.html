@@ -1,0 +1,28 @@
+<p-card header="Restablecer contraseña" class="login-card">
+  <div class="p-fluid">
+    <div class="field" style="margin-bottom: 1.5rem;">
+      <label for="correo">Correo</label>
+      <input id="correo" type="text" pInputText [(ngModel)]="correo" readonly />
+    </div>
+
+    <div class="field" style="margin-bottom: 1.5rem;">
+      <label for="nuevaContrasena">Nueva contraseña</label>
+      <p-password
+        id="nuevaContrasena"
+        [(ngModel)]="nuevaContrasena"
+        feedback="true"
+        toggleMask="true">
+      </p-password>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: right;">
+      <button
+        pButton
+        type="button"
+        label="Guardar"
+        icon="pi pi-save"
+        (click)="enviarRestablecimiento()">
+      </button>
+    </div>
+  </div>
+</p-card>

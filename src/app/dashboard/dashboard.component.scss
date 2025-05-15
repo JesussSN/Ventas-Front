@@ -66,10 +66,12 @@
   }
   
   .imagen-producto {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-  }
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+}
+
   

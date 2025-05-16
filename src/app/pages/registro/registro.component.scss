@@ -11,3 +11,9 @@
 .guardar-button {
   width: 100%;
 }
+
+.container {
+  max-width: 400px;  /* ancho máximo, puedes ajustar */
+  margin: 0 auto;    /* centra horizontalmente */
+  padding: 0 1rem;   /* pequeño padding para que no toque los bordes en pantallas pequeñas */
+}

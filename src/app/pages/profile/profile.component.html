@@ -4,8 +4,11 @@
     <form class="profile-form" (ngSubmit)="guardarCambios()">
       <div class="p-fluid grid">
 
+        <div class="field col-12 md:col-6">
+        <label for="nombre">Nombre</label>
         <input id="nombre" type="text" pInputText [(ngModel)]="usuario.nombre" name="nombre"
         (input)="usuario.nombre = usuario.nombre.toUpperCase()" />
+        </div>
 
         <div class="field col-12 md:col-6">
           <label for="correo">Correo electrónico</label>
@@ -14,8 +17,7 @@
 
         <div class="field col-12 md:col-6">
         <label for="telefono">Teléfono</label>
-        <input id="telefono" type="tel" pInputText [(ngModel)]="usuario.telefono"
-        name="telefono" maxlength="10" (keypress)="soloNumeros($event)" required />
+        <input id="telefono" type="tel" pInputText [(ngModel)]="usuario.telefono" name="telefono" maxlength="10" (keypress)="soloNumeros($event)" required />
         </div>
 
         <div class="field col-12">
@@ -26,14 +28,18 @@
 
         <div class="field col-12 md:col-6">
           <label for="password">Nueva Contraseña</label>
-          <p-password id="password" [(ngModel)]="nuevaPassword" name="nuevaPassword" [feedback]="false"
-          [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+          <p-password id="password" [(ngModel)]="nuevaPassword" name="nuevaPassword" [feedback]="false" [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+            <div *ngIf="nuevaPassword && !validarPassword(nuevaPassword)" class="error-message">
+              La contraseña debe tener al menos una mayúscula, una minúscula y un número.
+            </div>
         </div>
 
         <div class="field col-12 md:col-6">
           <label for="repetirPassword">Repetir Contraseña</label>
-          <p-password id="repetirPassword" [(ngModel)]="repetirPassword" name="repetirPassword"
-          [feedback]="false" [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+          <p-password id="repetirPassword" [(ngModel)]="repetirPassword" name="repetirPassword" [feedback]="false" [toggleMask]="true" inputStyleClass="p-inputtext"></p-password>
+            <div *ngIf="repetirPassword && repetirPassword !== nuevaPassword" class="error-message">
+              Las contraseñas no coinciden.
+            </div>
         </div>
 
         <div class="col-12 p-d-flex p-jc-center">

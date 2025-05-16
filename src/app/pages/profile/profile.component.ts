@@ -99,4 +99,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  validarPassword(password: string): boolean {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+    return regex.test(password);
+  }
+
 }

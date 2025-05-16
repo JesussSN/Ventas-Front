@@ -28,12 +28,13 @@
 
 <p-dialog header="Recuperar contraseña" [(visible)]="mostrarDialogoRecuperacion" [modal]="true" [closable]="true" [style]="{width: '350px'}">
   <div class="p-fluid">
-    <div class="field">
-      <label for="emailRecuperacion">Correo electrónico</label>
+    <div class="field" style="margin-bottom: 0.7rem;">
+      <label for="emailRecuperacion" style="margin-bottom: 0.3rem; display: block;">Correo electrónico</label>
       <input id="emailRecuperacion" type="email" pInputText [(ngModel)]="correoRecuperacion" />
     </div>
-    <div class="button-container" style="margin-top: 1.5rem; text-align: right;">
+    <div class="button-container" style="margin-top: 0.3rem; text-align: right;">
       <button pButton type="button" label="Validar correo" icon="pi pi-envelope" (click)="enviarRecuperacion()"></button>
     </div>
   </div>
 </p-dialog>
+

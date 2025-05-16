@@ -39,60 +39,64 @@ export class RegistroComponent {
 
   constructor(private router: Router, private usuarioService: UsuarioService, private messageService: MessageService) {}
 
-registrarUsuario() {
-  
-  if (this.password !== this.repetirPassword) {
-    this.passwordsNoCoinciden = true;
-    return;
-  }
-
-  if (!this.validarPassword(this.password)) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: 'Contraseña inválida',
-      detail: 'La contraseña debe tener al menos una mayúscula, una minúscula y un número.'
-    });
-    return;
-  }
-
-  if (!this.validarCorreo(this.correo_electronico)) {
-    this.messageService.add({
-      severity: 'warn',
-      summary: 'Correo inválido',
-      detail: 'Ingrese un correo electrónico válido.'
-    });
-    return;
-  }
-
-  this.passwordsNoCoinciden = false;
-
-  const usuario: Usuario = {
-    nombre: this.nombre,
-    correo_electronico: this.correo_electronico,
-    telefono: this.telefono,
-    direccion: this.direccion,
-    password: this.password
-  };
-
-  this.usuarioService.crearUsuario(usuario).subscribe({
-    next: () => {
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Registro exitoso',
-        detail: 'Usuario creado correctamente'
-      });
-      setTimeout(() => this.router.navigate(['/login']), 2000);
-    },
-    error: (err) => {
-      const mensaje = err.error?.mensaje || 'Ocurrió un error al registrar el usuario.';
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error de registro',
-        detail: mensaje
-      });
+  registrarUsuario() {
+    
+    if (this.password !== this.repetirPassword) {
+      this.passwordsNoCoinciden = true;
+      return;
     }
-  });
-}
+
+    if (!this.validarPassword(this.password)) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Contraseña inválida',
+        detail: 'La contraseña debe tener al menos una mayúscula, una minúscula y un número.'
+      });
+      return;
+    }
+
+    if (!this.validarCorreo(this.correo_electronico)) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Correo inválido',
+        detail: 'Ingrese un correo electrónico válido.'
+      });
+      return;
+    }
+
+    this.passwordsNoCoinciden = false;
+
+    const usuario: Usuario = {
+      nombre: this.nombre,
+      correo_electronico: this.correo_electronico,
+      telefono: this.telefono,
+      direccion: this.direccion,
+      password: this.password
+    };
+
+    this.usuarioService.crearUsuario(usuario).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Registro exitoso',
+          detail: 'Usuario creado correctamente'
+        });
+        setTimeout(() => this.router.navigate(['/login']), 2000);
+      },
+      error: (err) => {
+        const mensaje = err.error?.mensaje || 'Ocurrió un error al registrar el usuario.';
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error de registro',
+          detail: mensaje
+        });
+      }
+    });
+  }
+
+  volverAlLogin() {
+    this.router.navigate(['/login']);
+  }
 
   validarTelefono(event: any) {
     const input = event.target.value;
@@ -119,5 +123,4 @@ registrarUsuario() {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
     return regex.test(password);
   }
-
 }

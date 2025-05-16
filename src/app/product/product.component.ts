@@ -31,9 +31,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   categorias = [
-    { label: 'Producto de belleza', value: 'Producto de belleza' },
-    { label: 'Producto electrónico', value: 'Producto electrónico' },
-    { label: 'Producto deportivo', value: 'Producto deportivo' }
+    { label: 'Producto de belleza', value: 'Belleza' },
+    { label: 'Producto electrónico', value: 'Electronica' },
+    { label: 'Producto deportivo', value: 'Deportes' }
   ];
 
   producto: Producto = this.nuevoProducto();
@@ -65,12 +65,16 @@ export class ProductComponent implements OnInit {
   }
 
   agregarProducto() {
+    this.producto.id = null;
     this.productoService.crear(this.producto).subscribe({
       next: () => {
         this.mostrarMensaje('Se agregó un nuevo producto al inventario');
         this.limpiarFormulario();
         this.productoActualizado.emit();
-        this.router.navigate(['/listProducts']);
+        
+        setTimeout(() => {
+          this.router.navigate(['/listProducts']);
+        }, 1000); 
       },
       error: (error) => console.error('Error al crear el producto:', error)
     });
@@ -78,16 +82,20 @@ export class ProductComponent implements OnInit {
 
   actualizarProducto() {
     this.productoService.actualizar(this.producto).subscribe({
-      next: () => {
-        this.mostrarMensaje('Producto actualizado correctamente');
-        this.modoEdicion = false;
-        this.limpiarFormulario();
-        this.productoActualizado.emit();
-        this.router.navigate(['/listProducts']);
+    next: () => {
+      this.mostrarMensaje('Producto actualizado correctamente');
+      this.modoEdicion = false;
+      this.limpiarFormulario();
+      this.productoActualizado.emit();
+
+        setTimeout(() => {
+          this.router.navigate(['/listProducts']);
+        }, 1000); 
       },
       error: (error) => console.error('Error al actualizar el producto:', error)
     });
   }
+
 
   limpiarFormulario() {
     this.producto = this.nuevoProducto();
@@ -108,7 +116,8 @@ export class ProductComponent implements OnInit {
       precio: 0,
       categoria: '',
       descripcion: '',
-      createAt: new Date()
+      createAt: new Date(),
+      stock: 0
     };
   }
 }

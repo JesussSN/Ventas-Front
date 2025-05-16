@@ -1,5 +1,4 @@
 <p-toast></p-toast>
-
 <form (ngSubmit)="modoEdicion ? actualizarProducto() : agregarProducto()" #productoForm="ngForm" class="p-fluid">
   <h2 class="mb-4">{{ modoEdicion ? 'Editar producto' : 'Agregar producto nuevo' }}</h2>
 
@@ -15,14 +14,19 @@
 
   <div class="field mb-3">
     <select id="categoria" [(ngModel)]="producto.categoria" name="categoria" required class="w-full custom-select">
-      <option value="" disabled selected>Seleccione una categoría</option>
+      <option value="" disabled>Seleccione una categoría</option>
       <option *ngFor="let cat of categorias" [value]="cat.value">{{ cat.label }}</option>
     </select>
-  </div>  
+  </div>
 
   <div class="field mb-3">
     <label for="descripcion" class="block text-900 font-medium mb-2 label-spacing">Descripción</label>
     <textarea id="descripcion" pInputTextarea [(ngModel)]="producto.descripcion" name="descripcion" rows="4" class="w-full"></textarea>
+  </div>
+
+  <div class="field mb-3">
+    <label for="stock" class="block text-900 font-medium mb-2 label-spacing">Cantidad</label>
+    <input id="stock" type="number" pInputText [(ngModel)]="producto.stock" name="stock" min="0" required class="w-full" />
   </div>
 
   <div class="field">

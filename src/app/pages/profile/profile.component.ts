@@ -91,4 +91,12 @@ export class ProfileComponent implements OnInit {
     localStorage.removeItem('usuarioId');
     this.router.navigate(['/login']);
   }
+
+  soloNumeros(event: KeyboardEvent): void {
+    const charCode = event.charCode;
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
+
 }

@@ -1,27 +1,27 @@
 <div class="dashboard-content">
   <h1 class="p-text-center">Perfil de Usuario</h1>
-  <p-card header="Formulario de Perfil" class="p-shadow-4">
+  <p-card header="Editar mi perfil" class="p-shadow-4">
     <form class="profile-form" (ngSubmit)="guardarCambios()">
       <div class="p-fluid grid">
 
-        <div class="field col-12 md:col-6">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" type="text" pInputText [(ngModel)]="usuario.nombre" name="nombre" required />
-        </div>
+        <input id="nombre" type="text" pInputText [(ngModel)]="usuario.nombre" name="nombre"
+        (input)="usuario.nombre = usuario.nombre.toUpperCase()" />
 
         <div class="field col-12 md:col-6">
           <label for="correo">Correo electrónico</label>
-          <input id="correo" type="email" pInputText [(ngModel)]="usuario.correo_electronico" name="correoElectronico" required />
+          <input id="correo" type="email" pInputText [(ngModel)]="usuario.correo_electronico" name="correoElectronico" readonly  />
         </div>
 
         <div class="field col-12 md:col-6">
-          <label for="telefono">Teléfono</label>
-          <input id="telefono" type="tel" pInputText [(ngModel)]="usuario.telefono" name="telefono" />
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" type="tel" pInputText [(ngModel)]="usuario.telefono"
+        name="telefono" maxlength="10" (keypress)="soloNumeros($event)" required />
         </div>
 
         <div class="field col-12">
           <label for="direccion">Dirección</label>
-          <input id="direccion" type="text" pInputText [(ngModel)]="usuario.direccion" name="direccion" />
+          <input id="direccion" type="text" pattern="^[0-9]{10}$"
+            maxlength="10" pInputText [(ngModel)]="usuario.direccion" name="direccion" />
         </div>
 
         <div class="field col-12 md:col-6">

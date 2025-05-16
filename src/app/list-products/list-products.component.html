@@ -3,37 +3,50 @@
 
   <p-confirmDialog></p-confirmDialog>
 
-  <p-table [value]="productos" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+  <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+    <span class="p-input-icon-left" style="flex-grow: 1;">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        placeholder="Buscar por nombre"
+        [(ngModel)]="filtroNombre"
+        (input)="filtrarProductos()"
+        style="width: 100%;" />
+    </span>
+
+    <p-dropdown
+      [options]="categorias"
+      [(ngModel)]="filtroCategoria"
+      placeholder="Filtrar por categoría"
+      (ngModelChange)="filtrarProductos()"
+      [style]="{ width: '200px' }">
+    </p-dropdown>
+  </div>
+
+  <p-table [value]="productosFiltrados" [paginator]="true" [rows]="5" responsiveLayout="scroll">
     <ng-template pTemplate="header">
       <tr>
+        <th>No Producto</th>
         <th>Nombre</th>
         <th>Precio</th>
         <th>Categoría</th>
         <th>Descripción</th>
+        <th>Cantidad</th>
         <th>Acciones</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-producto let-i="rowIndex">
       <tr>
+        <td>{{ producto.id }}</td>
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.precio | currency }}</td>
         <td>{{ producto.categoria }}</td>
         <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.stock }}</td>
         <td>
-          <button
-            pButton
-            type="button"
-            icon="pi pi-pencil"
-            class="p-button-sm p-button-text"
-            (click)="editarProducto(producto)">
-          </button>
-          <button
-            pButton
-            type="button"
-            icon="pi pi-trash"
-            class="p-button-sm p-button-text p-button-danger"
-            (click)="eliminarProducto(producto.id)">
-          </button>
+          <button pButton type="button" icon="pi pi-pencil" class="p-button-sm p-button-text" (click)="editarProducto(producto)"></button>
+          <button pButton type="button" icon="pi pi-trash" class="p-button-sm p-button-text p-button-danger" (click)="eliminarProducto(producto.id)"></button>
         </td>
       </tr>
     </ng-template>
